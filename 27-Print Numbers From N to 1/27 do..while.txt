@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+
+int ReadNumber() {
+	int num;
+	cout << "Please enter number : ";
+	cin >> num;
+	return num;
+}
+
+void UsingDo_WhileStatement(int num) {
+	cout << "\nUsing While Statement\n";
+	cout << "*************************\n";
+
+	int counter = num + 1;
+	do {
+		counter--;
+		cout << "Number is -> " << counter << endl;
+	} while (counter > 1);
+
+
+}
+
+int main() {
+
+	int num = ReadNumber();
+	UsingDo_WhileStatement(num);
+
+	return 0;
+}

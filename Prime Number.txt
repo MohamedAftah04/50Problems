@@ -1,0 +1,56 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+float ReadNumber(string massage) {
+	float number = 0;
+	cout << massage ;
+	cin >> number;
+	return number;
+
+}
+
+float PrimeorNot() {
+
+	int number = 0 , counter = 1;
+
+	do {
+		number = ReadNumber("Enter number #" + to_string(counter) + " ");
+
+		if (number > 2 && number % 2 == 0) {
+			cout << "Not Prime !" << endl;
+		}
+
+		if ( number == 2 || number == 9 || number == 15) {
+			cout << "Not Prime !" << endl;
+			break;
+		}
+
+		if (number % 2 == 1) {
+			cout << "Prime!" << endl;
+		}
+
+
+			counter++;
+
+
+
+	} while (number != -99);
+
+	return 0;
+
+}
+
+
+
+
+
+int main() {
+
+	cout << PrimeorNot() <<endl ;
+	cout << PrimeorNot() <<endl ;
+
+
+	return 0;
+}

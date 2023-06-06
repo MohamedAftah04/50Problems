@@ -1,0 +1,34 @@
+#include <iostream>
+#include <string>
+#include <math.h>
+using namespace std;
+
+void ReadReactangleInfo(float& A, float& D) {
+	cout << "Please enter A -> ";
+	cin >> A;
+
+	cout << "Please enter D -> ";
+	cin >> D;
+
+}
+
+float CalculatingRectangleArea(float A, float D) {
+	float Area = A * sqrt(pow(D, 2) - pow(A, 2));
+	return Area;
+}
+
+void PrintReactangleArea(float Area) {
+	cout << "\n\nThe rectangle area [by side and diagonal] is --> " << Area << endl;
+}
+
+
+
+
+int main() {
+
+	float A, D;
+	ReadReactangleInfo(A, D);
+	PrintReactangleArea(CalculatingRectangleArea(A, D));
+
+	return 0;
+}

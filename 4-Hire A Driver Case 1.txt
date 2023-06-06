@@ -1,0 +1,51 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+void Read( string age_info, string driver_licenseinfo , string what) {
+	cout << "\n***************************************\n";
+	cout << "You " << age_info << endl;
+	cout << "You " << driver_licenseinfo << endl;
+	cout << "\nYour --> " << what << endl;
+	cout << "\n***************************************\n";
+}
+
+void Print() {
+	int a, d;
+	cout << "Enter Age : ";
+	cin >> a;
+	cout << "\nYou Have A Driver Licenes ?" << endl;
+	cout << "[1] Yes  \n[2] No" << endl;
+	cout << "Chose : ";
+	cin >> d; 
+
+	if (a < 18 || d != 1) {
+		Read("UnderAge --> XX ", "Havn't [D.L] --> XX " , "Your Not Selected ");
+	}
+	else if (a >= 18 && d == 1) {
+		Read ("Selected Age Confirm ! ", "Have [D.L] !  " , "Your Selected !");
+	}
+
+	else if (a < 18 && d == 2) {
+		Read("UnderAge --> XX ", "You Have [D.L] !  ", "Your Not Selected ");
+
+	}
+
+
+}
+
+
+
+
+
+
+
+int main()
+{
+	
+	Print();
+
+
+
+	return 0;
+}

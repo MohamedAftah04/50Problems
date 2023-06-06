@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+
+float ReadRadiousInfo() {
+	float R;
+	cout << "Please enter raious : ";
+	cin >> R;
+	return R;
+}
+
+float CalcuateCircleAreaByRadious(float R){
+
+	const float pi = 3.14;
+	float Area = pi * pow(R, 2);
+	return Area;
+}
+
+void PrintCircleArea(float Area) {
+	cout << "\n\nThe Circle area [from radious] is -> " << Area << endl <<endl ;
+}
+
+int main() {
+
+	PrintCircleArea(CalcuateCircleAreaByRadious(ReadRadiousInfo()));
+
+	return 0;
+}

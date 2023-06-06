@@ -1,0 +1,73 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+void Read( string age_info, string driver_licenseinfo , string what) {
+	cout << "\n***************************************\n";
+	cout << "You " << age_info << endl;
+	cout << "You " << driver_licenseinfo << endl;
+	cout << "\nYour --> " << what << endl;
+	cout << "\n***************************************\n";
+}
+
+void Print() {
+	int a, d , r;
+	cout << "You Have A Recommendation : " << endl;
+	cout << "[1] Yes  /   [2] No" << endl;
+	cout << "Chose : ";
+	cin >> r;
+
+	//have recommedation :
+
+	while (r == 1) {
+		cout << "Your Confermation !" << endl;
+		exit(0);
+	}
+
+
+	cout << "\nEnter Age : ";
+	cin >> a;
+	cout << "\nYou Have A Driver Licenes ?" << endl;
+	cout << "[1] Yes  /   [2] No" << endl;
+	cout << "Chose : ";
+	cin >> d; 
+
+	//haven't recommendattion :
+		 if (r == 2) {
+
+		if (a < 18 || d == 2) {
+			Read("UnderAge --> XX ", "Havn't [D.L] --> XX ", "Your Not Selected ");
+		}
+		else if (a >= 18 && d == 1) {
+			Read("Selected Age Confirm ! ", "Have [D.L]  ", "Your Selected !");
+		}
+
+		else if (a >= 18 && d == 2) {
+			Read("Selected Age Confirm ! ", "Havn't [D.L] --> XX  ", "Your Not Selected !");
+		}
+
+
+
+		else if (a < 18 && d == 2) {
+			Read("UnderAge --> XX ", "You Have [D.L] !  ", "Your Not Selected ");
+
+		}
+
+	}
+}
+
+
+
+
+
+
+
+int main()
+{
+	
+	Print();
+
+
+
+	return 0;
+}

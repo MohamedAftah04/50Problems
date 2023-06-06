@@ -1,0 +1,73 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+struct stTaskDuration {
+	int SecondsPerDay , SecondsPerhour  , SecondsPerminute , NumberOfSeconds ;
+
+};
+
+int ReadPositiveNumber(string massage) {
+	int number = 0;
+
+	do {
+		cout << massage;
+		cin >> number;
+
+	} while (number < 0);
+	return number;
+	
+}
+
+stTaskDuration SecondsToTaskDuration(int TotalSeconds) {
+	
+	stTaskDuration	TaskDuration;
+
+	const int SecondsPerDay = 24 * 60 * 60;
+	const int SecondsPerhour = 60 * 60;
+	const int SecondsPerminute = 60;
+
+	int reminder = 0;
+
+	TaskDuration.SecondsPerDay = floor(TotalSeconds / SecondsPerDay);
+	reminder = TotalSeconds % SecondsPerDay;
+
+	TaskDuration.SecondsPerhour = floor(reminder / SecondsPerhour);
+	reminder = reminder % SecondsPerhour;
+
+	TaskDuration.SecondsPerminute = floor(reminder / SecondsPerminute);
+	reminder = reminder % SecondsPerminute; 
+
+	TaskDuration.NumberOfSeconds = reminder;
+
+
+
+
+
+
+
+	return TaskDuration	;
+
+}
+
+void PrintTaskDuration(stTaskDuration TaskDuration) {
+
+	cout << "\n\n";
+	cout << "D : H : M : S" << endl;
+	cout << TaskDuration.SecondsPerDay << " : "
+		<< TaskDuration.SecondsPerhour << " : "
+		<< TaskDuration.SecondsPerminute << " : "
+		<< TaskDuration.NumberOfSeconds << "   " << endl << endl;
+	
+
+}
+
+int main() {
+
+	int TotalSeconds = ReadPositiveNumber("Please enter number of seconds : ");
+	PrintTaskDuration(SecondsToTaskDuration(TotalSeconds));
+
+	return 0;
+}
+
+

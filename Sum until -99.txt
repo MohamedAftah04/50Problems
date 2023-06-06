@@ -1,0 +1,38 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+
+//reuseability
+float ReadNumber(string massage)
+{
+	float number = 0;
+	cout << massage;
+	cin >> number;
+	return number;
+}
+
+float SumNumbers() {
+
+	int sum = 0, counter = 1, number = 0;
+
+	do {
+		number = ReadNumber("enter number #" + to_string(counter) + " ");
+		if (number == -99) {
+			break;
+		}
+		sum = sum + number;
+		counter++;
+
+	} while (number != -99);
+	
+	return sum;
+
+}
+
+int main() {
+
+	cout << "\nResult --> " << SumNumbers() << endl;
+
+	return 0;
+}

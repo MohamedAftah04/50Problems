@@ -1,0 +1,28 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+void PrintNum( string Kind) {
+	cout << "The Number Is : " << Kind;
+}
+
+void ReadNum() {
+	int x;
+	cout << "Enter The Number --> ";
+	cin >> x;
+	if (x % 2 == 0) {
+		PrintNum("Even");
+	}
+	else
+		PrintNum("Odd");
+}
+
+int main()
+{
+	
+	ReadNum();
+
+
+
+	return 0;
+}

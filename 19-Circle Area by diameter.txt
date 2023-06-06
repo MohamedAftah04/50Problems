@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+
+float ReadDiameterInfo() {
+	float d;
+	cout << "Please enter diameter : ";
+	cin >> d;
+	return d;
+}
+
+float calculteCircleAreaByDiameter(float d) {
+	const float pi = 3.141592653589793238;
+
+	float Area = (pi * pow(d, 2)) / 4;
+
+	return Area;
+}
+
+void PrintCircleArea(float Area)
+{
+	cout << "\nCicle Area [from diameter] is -> " << Area << endl << endl;
+
+}
+
+int main() {
+
+	PrintCircleArea(calculteCircleAreaByDiameter(ReadDiameterInfo()));
+
+	return 0;
+}

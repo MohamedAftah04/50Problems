@@ -1,0 +1,35 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int ReadNumber() {
+	int num;
+	cout << "please enter number : ";
+	cin >> num;
+	return num;
+}
+
+int UsingWhileStatement(int num) {
+
+	cout << "\nUsing while statement\n";
+	cout << "******************************\n";
+
+	int n = 1;
+	while (n <= num) {
+		cout << "Number is -> " << n << endl;
+		n++;
+	}
+
+	return num;
+
+}
+
+
+int main() {
+
+	int num = ReadNumber();
+	UsingWhileStatement(num);
+
+	return 0;
+}

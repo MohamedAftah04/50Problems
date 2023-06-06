@@ -1,0 +1,78 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+
+string ReadPinCode() {
+
+	string PinCode;
+
+	cout << "Please enter The Password : ";
+
+	cin >> PinCode;
+
+	return PinCode;
+}
+
+bool Login() {
+
+	// if true // if false // 
+
+	string CheckPinCode;
+	int counter = 3;
+
+	do {
+
+		counter--;
+		CheckPinCode = ReadPinCode();
+
+		if (CheckPinCode == "sasa201084") {
+
+			return 1;
+
+		}
+
+		else
+		{
+
+				system("color 4F"); // Show Red Color
+
+				cout << "Wrong PIN , you have " << counter << " more tries. \n\n";
+			
+		}
+
+	} while (counter >= 1 &&  CheckPinCode != "sasa201084");
+
+	return 0;
+
+}
+
+void Test() {
+
+	if (Login()) {
+
+		system("color 2F"); // Show Green Color
+
+		cout << "\n\nLogin Sucess :)\n";
+
+		cout << "Your Balance Is [20k$]\n\n\n" << endl;
+
+	}
+
+	else
+	{
+
+		cout << "Your Account has been bloked ! " << endl; 
+
+	}
+
+	
+
+}
+
+int main() {
+
+	Test();
+
+	return 0;
+}

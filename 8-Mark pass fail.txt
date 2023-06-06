@@ -1,0 +1,38 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+enum enPassFill{Pass = 1 , Fill = 2};
+
+int ReadMark() {
+
+	int Mark;
+	cout << "Please enter your mark : ";
+	cin >> Mark;
+
+	return Mark;
+}
+
+enPassFill CheckMark(int Mark) {
+	if (Mark >= 50)
+		return enPassFill::Pass;
+	else
+		return enPassFill::Fill;
+}
+
+void PrintPassFill(int Mark) {
+	if (CheckMark(Mark) == enPassFill::Pass)
+		cout << "\nYour Pass Next Prep !\n\n";
+	else
+		cout << "\n Sorry Your Fill XX" << endl;
+
+}
+
+int main() {
+
+	PrintPassFill(CheckMark(ReadMark()));
+
+	return 0;
+}
+

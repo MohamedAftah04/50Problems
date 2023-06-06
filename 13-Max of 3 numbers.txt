@@ -1,0 +1,62 @@
+#include <iostream>
+
+using namespace std;
+
+
+enum enWhosBig { Number1 = 1, Number2 = 2 , Number3 = 3 };
+
+//Read number from user
+void ReadNumber(int& number1, int& number2 , int& number3) {
+
+	cout << "Please enter number 1 : ";
+	cin >> number1;
+
+	cout << "Please enter number 2 : ";
+	cin >> number2;
+
+	cout << "Please enter number 3 : ";
+	cin >> number3;
+
+}
+
+enWhosBig WhoseBigger(int number1, int number2 , int number3) {
+	if (number1 > number2)
+		if (number1 > number3)
+			return enWhosBig::Number1;
+		else
+			return enWhosBig::Number2;
+
+	 if (number2 > number3)
+		return enWhosBig::Number2;
+	else
+		return enWhosBig::Number3;
+
+}
+
+
+
+
+
+
+
+
+
+void MaxOFThreeNumbers(int who , int number1 , int number2 , int number3) {
+	if (who == enWhosBig::Number1)
+		cout << "[" << number1 << "] Is bigger than [" << number2 << "] And [" << number3 << "]" << endl;
+	else if (who == enWhosBig::Number2)
+		cout << "[" << number2 << "] Is bigger than [" << number1 << "] And [" << number3 << "]" << endl;
+	else 
+		cout << "[" << number3 << "] Is bigger than [" << number1 << "] And [" << number2 << "]" << endl;
+
+}
+
+
+int main() {
+
+	int number1, number2 , number3;
+	ReadNumber(number1, number2 , number3);
+	MaxOFThreeNumbers(WhoseBigger(number1, number2 , number3) , number1 , number2 , number3);
+
+	return 0;
+}

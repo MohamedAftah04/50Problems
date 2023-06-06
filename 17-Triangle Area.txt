@@ -1,0 +1,36 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+void ReadTringleInfo(float& Base, float& Hight) {
+
+	cout << "Please enter Base  : ";
+	cin >> Base;
+
+	cout << "Please enter Hight : ";
+	cin >> Hight;
+}
+
+float CalculateTringleArea(float Base, float Hight) {
+
+	float Area = (Base / 2) * Hight;
+	return Area;
+
+}
+
+void PrintTringleAreaResult(float Area) {
+	cout << "\n\nThe tringle area is -> " << Area << endl;
+
+}
+
+
+
+
+int main() {
+
+	float Base, Hight;
+	ReadTringleInfo(Base, Hight);
+	PrintTringleAreaResult(CalculateTringleArea(Base, Hight));
+
+	return 0;
+}

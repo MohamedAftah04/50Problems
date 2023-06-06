@@ -1,0 +1,46 @@
+#include <iostream>
+using namespace std;
+
+enum enOddEven{Odd = 1 , Even = 2};
+
+int ReadNumber() {
+	int number;
+	cout << "Please enter number : ";
+	cin >> number;
+	return number;
+}
+
+enOddEven CheckNumberOddEven(int number) {
+	if (number % 2 != 0)
+		return enOddEven::Odd;
+	else
+		return enOddEven::Even;
+}
+
+int UsingWhileLoop(int num) {
+
+	int sum = 0;
+	int counter = 0;
+	cout << "Using while loop \n" << "************" << endl;
+
+
+
+	while (counter < num ) {
+		counter++;
+		if (CheckNumberOddEven(counter) == enOddEven::Odd) {
+			sum += counter;
+		}
+		
+	}
+
+	return sum;
+
+}
+
+
+int main() {
+
+	int num = ReadNumber();
+	cout << UsingWhileLoop(num) << endl;
+	return 0;
+}

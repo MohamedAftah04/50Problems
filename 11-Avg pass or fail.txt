@@ -1,0 +1,55 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+enum enPassFill{Pass = 1, Fill = 2};
+
+void ReadMarks(int& mark1 ,int& mark2, int& mark3) {
+	cout << "Please enter a mark 1 -> ";
+	cin >> mark1;
+
+	cout << "Please enter a mark 2 -> ";
+	cin >> mark2;
+
+	cout << "Please enter a mark 3 -> ";
+	cin >> mark3;
+
+
+}
+
+int SumOf3Marks(int mark1, int mark2, int mark3) {
+	return mark1 + mark2 + mark3;
+}
+
+float CalculateAvg(int mark1, int mark2, int mark3) {
+
+	return (float)SumOf3Marks(mark1 , mark2 , mark3) / 3;
+
+}
+
+
+enPassFill CheckAvg(float Avg)
+{
+	if (Avg >= 50)
+		return enPassFill::Pass;
+	else
+		return enPassFill::Fill;
+}
+
+void PrintResult(float Avg) {
+	cout << "\n\nAverage value -> " << Avg << endl;
+
+	if (CheckAvg(Avg) == enPassFill::Pass)
+		cout << "Your Pass!\n\n\n";
+	else
+		cout << "Your Fill ):\n\n\n";
+
+}
+
+int main() {
+
+	int mark1, mark2, mark3;
+	ReadMarks(mark1, mark2, mark3);
+	PrintResult(CalculateAvg(mark1 , mark2 , mark3));
+	return 0;
+}

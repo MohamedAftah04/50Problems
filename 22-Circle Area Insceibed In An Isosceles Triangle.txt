@@ -1,0 +1,34 @@
+#include <iostream>
+using namespace std;
+
+void ReadCircleInfo(float& a, float& b) {
+	cout << "Please enter A :";
+	cin >> a;
+
+	cout << "Please enter B : ";
+	cin >> b;
+}
+
+float CalculateCircleArea(float a, float b) {
+	const float pi = 3.141592653589793238;
+	float Area = (pi * pow(b, 2) / 4) * ((2 * a - b) / (2 * a + b));
+	return Area;
+
+}
+
+void PrintCircleArea(float Area) {
+	cout << "\n\nCircle area is --> " << Area << endl;
+}
+
+
+
+
+int main() {
+
+	float a, b;
+	ReadCircleInfo(a, b);
+	PrintCircleArea(CalculateCircleArea(a, b));
+
+
+	return 0;
+}

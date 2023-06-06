@@ -1,0 +1,65 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+enum enDay{ Sun = 1 , Mon = 2, Tue =3 , wed = 4 , Thurs = 5 , Fri = 6 , Sat = 7};
+
+int ReadPosotiveNumber(string massage , int from , int to) {
+
+	cout << "\t\t 1-[Sun]  2-[Mon]  3-[Tue]   4-[wed]   5-[Thurs]   6-[Fri]   7-[Sat]     " << endl<<endl;
+
+	int number = 0;
+	do {
+		cout << massage;
+		cin >> number;
+	} while (number < from || number >to);
+	return number;
+	
+
+}
+
+enDay GetDayOfWeek() {
+	return (enDay)ReadPosotiveNumber("Please enter Day Number : ", 1, 7);
+}
+
+string CheckNumberDayName(enDay Day) {
+	
+	switch (Day) {
+	case enDay::Sat:
+		return "\t\t\t\t\tDay is Saturday \n";
+	case enDay::Sun:
+		return "\t\t\t\t\tDay is Sunday \n";
+	case enDay::Mon:
+		return "\t\t\t\t\tDay is Monday \n";
+	case enDay::Tue:
+		return "\t\t\t\t\tDay is Tuesday \n";
+	case enDay::wed:
+		return "\t\t\t\t\tDay is Wednesday\n";
+	case enDay::Thurs:
+		return "\t\t\t\t\tDay is Thursday\n";
+	case enDay::Fri:
+		return "\t\t\t\t\tDay is Friday\n";
+	}
+
+	
+}
+
+void CleanCode() {
+
+	cout << CheckNumberDayName(GetDayOfWeek())  ;
+	cout << "\t\t\t\t      *****************" << endl;
+	cout << "\t\t\t\t    *********************" << endl;
+	cout << "\t\t\t\t  *************************" << endl;
+
+
+	cout << "************************************************************" << endl;
+	cout << "*************************************************************" << endl << endl;
+
+}
+
+int main() {
+
+	CleanCode();
+
+	return main ();
+}

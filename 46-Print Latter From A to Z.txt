@@ -1,0 +1,72 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+//cout << "1-[Capital]     2-[Small] -> ";
+
+
+//select capital or small enum
+
+enum enCAPSORSMALL { cap = 1, small = 2, together = 3 };
+
+int SelectCapsOrSmall(string massage) {
+	int number = 0;
+
+	do {
+		cout << massage;
+		cin >> number;
+	} while (number > 3 || number < 1);
+
+	cout << "************************************************\n";
+
+	return number;
+}
+
+void PrintAllCaracters() {
+
+
+
+	switch (SelectCapsOrSmall("1-[Capital]      2-[Small]      3-[Together] --> ")) {
+
+	case enCAPSORSMALL::cap:
+
+		for (char crcCap = 'A'; crcCap <= 'Z'; crcCap++) {
+			cout << "----> [" << crcCap << "]" << endl;
+		}
+		break;
+
+	case enCAPSORSMALL::small:
+		for (char crcSmall = 'a'; crcSmall <= 'z'; crcSmall++) {
+			cout << "---> [" << crcSmall << "]" << endl;
+		}
+		break;
+
+	case enCAPSORSMALL::together:
+		char s = 'a';
+		char c = 'A';
+
+		do {
+			cout << "[Small]----> [" << s << "] \t[Capital]----> [" << c << "]" << endl;
+			s++;
+			c++;
+		} while (s <= 'z' && c <= 'Z');
+
+
+
+	}
+}
+
+
+
+
+
+
+
+
+int main() {
+
+	PrintAllCaracters();
+
+	return 0;
+}

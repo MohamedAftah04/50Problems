@@ -1,0 +1,40 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+struct stNumbers {
+	int Num1, Num2, Num3;
+	int Calculate3Nums;
+};
+
+stNumbers ReadNumbers() {
+	stNumbers rnum;
+	cout << "Please enter a 1st number : ";
+	cin >> rnum.Num1;
+
+	cout << "Please enter a 2st number : ";
+	cin >> rnum.Num2;
+
+	cout << "Please enter a 3st number : ";
+	cin >> rnum.Num3;
+
+	return rnum;
+}
+
+int CalculateNumbers(stNumbers rnum) {
+	int result;
+	rnum.Calculate3Nums = rnum.Num1 + rnum.Num2 + rnum.Num3;
+	result = rnum.Calculate3Nums;
+	return result;
+}
+
+void PrintResult(int result) {
+	cout << "Sum of number equal : " << result << endl;
+}
+
+int main() {
+
+	PrintResult(CalculateNumbers(ReadNumbers()));
+
+	return 0;
+}

@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+
+
+void ReadAreaInfo(int& Length, int& Width) {
+
+	//eltool
+	cout << "Please enter length : ";
+	cin >> Length;
+
+	//el3rd
+	cout << "Please enter width  : ";
+	cin >> Width;
+}
+
+
+int CalculateRectangleArea(int Length, int Width) {
+	
+	return Length * Width; 
+}
+
+void PrintAreaValue(int area) {
+	cout << "\nThe rectangle area --> " << area;
+}
+
+
+
+
+
+int main() {
+
+	int Length, Width , area;
+	ReadAreaInfo(Length, Width);
+	PrintAreaValue(CalculateRectangleArea(Length, Width));
+
+	return 0;
+}

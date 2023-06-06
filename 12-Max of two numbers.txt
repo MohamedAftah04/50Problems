@@ -1,0 +1,85 @@
+#include <iostream>
+
+using namespace std;
+
+enum enPassOrFail {Pass = 1 , Fail = 2};
+
+//Read Mark From User 
+void ReadMarks(int& mark1, int& mark2, int& mark3) {
+	cout << "\nPlease enter mark1 : ";
+	cin >> mark1;
+	cout << "Please enter mark2 : ";
+	cin >> mark2;
+	cout << "Please enter mark3 : ";
+	cin >> mark3;
+
+}
+
+//Addation And return marks 
+int SumOFMarks(int mark1, int mark2, int mark3) {
+	return mark1 + mark2 + mark3;
+}
+//Avg --> SumOFmarks / 3 
+float AvgOFMarks(int mark1, int mark2, int mark3) {
+	return (float) SumOFMarks(mark1 , mark2 , mark3) / 3;
+}
+
+//cout --> mark and avg --> values
+void PrintResult(int Total , float Avg) {
+	cout << "\n\nThe Sum Of Marks is --> " << Total << endl;
+	cout << "The Avg Of Marks is --> " << Avg << endl;
+}
+
+enPassOrFail CheckAvgMarks(float Avg) {
+	if (Avg >= 50)
+		return enPassOrFail::Pass;
+	else
+		return enPassOrFail::Fail;
+
+}
+
+//Pass Or Fail Use iF statement and enums -
+void PrintResultPorF(float Avg) {
+	cout << "Your avg is [" << Avg << "]" << endl;
+	if (Avg == enPassOrFail::Pass)
+		cout << "Your passed (:\n";
+	else
+		cout << "Your faild :(\n";
+
+
+}
+
+//Funcetion Have 80% Program --> Clean Code;
+void SumAndAvg() {
+	int mark1, mark2, mark3;
+	ReadMarks(mark1, mark2, mark3);
+	PrintResult(SumOFMarks(mark1, mark2, mark3), AvgOFMarks(mark1, mark2, mark3));
+	PrintResultPorF(AvgOFMarks(mark1, mark2, mark3));
+}
+
+
+//Select You need calculate marks or no 
+void YouNeedOrNo() {
+	int chose;
+	cout << "Hello! This program can Calculated your 3 marks !..\n";
+	cout << "You want open it  ...  1[Yes] , 2[No]  : ";
+	cin >> chose;
+	if (chose == 1) {
+		SumAndAvg();
+	}
+	else if (chose == 2)
+		exit(0);
+	else {
+		cout << "\nYou want open it ...  1[Yes] , 2[No]  ? ";
+		cin >> chose;
+	}
+	
+}
+
+
+int main() {
+	int chose;
+
+	YouNeedOrNo();
+	return 0;
+}

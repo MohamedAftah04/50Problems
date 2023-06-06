@@ -1,0 +1,48 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+struct stTaskDuration {
+	int days, hours, minuts, seconds;
+};
+
+int ReadPositiveNumber(string massage) {
+	int number = 0;
+
+	do {
+		cout << massage;
+		cin >> number;
+	} while (number < 0);
+
+	return number;
+}
+
+stTaskDuration ReadTaskDuration() {
+	stTaskDuration ReadTask;
+	 
+	ReadTask.days =   ReadPositiveNumber("Please enter number of days    : ");
+	ReadTask.hours =  ReadPositiveNumber("Please enter number of hours   : ");
+	ReadTask.minuts = ReadPositiveNumber("Please enter number of minutes : ");
+	ReadTask.seconds= ReadPositiveNumber("Please enter number of seconds : ");
+
+
+	return ReadTask;
+}
+
+int TaskDurationInSecond(stTaskDuration ReadTask) {
+
+	int Duration = 0;
+	Duration = ReadTask.days * 24 * 60 * 60;
+	Duration = Duration + (ReadTask.hours * 60 * 60);
+	Duration = Duration + (ReadTask.minuts * 60);
+	Duration = Duration + (ReadTask.seconds);
+	
+	return Duration;
+}
+
+int main() {
+
+	cout << "\nTask Duration In Second --> " << TaskDurationInSecond(ReadTaskDuration()) << endl << endl;
+
+	return 0;
+}

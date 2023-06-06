@@ -1,0 +1,34 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+
+int ReadPositiveNumber(string massage) {
+	int number;
+
+	do {
+		cout << massage << " --> ";
+		cin >> number;
+	} while (number < 0);
+
+	return number;
+}
+
+int FactorialNumber(int Num) {
+
+	int F = 1;
+	for (int counter = Num; counter >= 1; counter--) {
+		F = F * counter;
+	}
+	return F;
+
+}
+
+int main() {
+
+	cout << FactorialNumber(ReadPositiveNumber("Please enter positive number")) << endl << endl;
+
+	return 0;
+}
+

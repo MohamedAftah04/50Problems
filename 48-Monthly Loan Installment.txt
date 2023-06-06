@@ -1,0 +1,36 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+
+float ReadPositiveNumber(string massage) {
+
+	float number = 0;
+
+	do {
+		cout << massage;
+		cin >> number;
+
+	} while (number <= 0);
+	return (float)number;
+
+}
+
+float HowMonthly(float total , float monthnumbers){
+
+	return (float)total / monthnumbers;
+
+}
+
+
+int main() {
+
+	float total = ReadPositiveNumber("Please enter Total Cash : ");
+	float monthNumber = ReadPositiveNumber("Please enter number of months : ");
+	float result = HowMonthly(total, monthNumber);
+
+	cout << "Should Payment [" << result << "$] Per month\n" << endl;
+
+	return 0;
+}

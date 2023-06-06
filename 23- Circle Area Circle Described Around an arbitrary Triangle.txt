@@ -1,0 +1,39 @@
+#include <iostream>
+using namespace std;
+
+void ReadTriangleInfo(float& a, float& b, float& c) {
+	cout << "Please enter [A] : ";
+	cin >> a;
+	cout << "Please enter [B] : ";
+	cin >> b;
+	cout << "Please enter [C] : ";
+	cin >> c;
+}
+
+float CalculateTriangleAreaDAAT(float a, float b , float c) {
+	const float pi = 3.141592653589793238;
+	float p = (a + b + c) / 2;
+
+	float Calc = ((a * b * c) / (4 * sqrt(p * (p - a) * (p - b) * (p - c))));
+
+	float Area = pi * pow(Calc, 2);
+	return Area;
+}
+
+void PrintTriangleArea(float Area) {
+	cout << "\n\nThe Circle Area is --> " << Area << endl << endl;
+}
+
+
+
+
+
+
+int main() {
+
+	float a, b, c;
+	ReadTriangleInfo(a, b, c);
+	PrintTriangleArea(CalculateTriangleAreaDAAT(a, b, c));
+
+	return 0;
+}

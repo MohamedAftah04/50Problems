@@ -1,0 +1,30 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int ReadNumber() {
+	int num;
+	cout << "please enter number : ";
+	cin >> num;
+	return num;
+}
+
+
+int UseingForStatement(int num) {
+
+	cout << "\nUsing for loop statement\n";
+	cout << "******************************\n";
+	for (int i = 1; i <= num; i++)
+		cout << "Number -> " << i << endl;
+	return num;
+}
+
+
+int main() {
+
+	int num = ReadNumber();
+	UseingForStatement(num);
+
+	return 0;
+}
