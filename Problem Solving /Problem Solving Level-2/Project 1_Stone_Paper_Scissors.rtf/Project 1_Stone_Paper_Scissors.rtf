@@ -1,0 +1,286 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2759
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\froman\fcharset0 Times-Roman;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red255\green255\blue255;\red25\green26\blue43;
+}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c100000\c100000\c100000\c0;\cssrgb\c13248\c14068\c22222;
+}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs30 \cf2 \cb3 \expnd0\expndtw0\kerning0
+#include <iostream>\
+#include <cstdlib>\
+using namespace std;\
+\
+enum enQuestionLevel \{ easy = 1, med = 2 , hard = 3 , mixx = 4 \};\
+enum enOperationType \{ add = 1, sub = 2, mult = 3, divid = 4 , mix = 5\};\
+\
+struct strGameResult\
+\{\
+	int numberOfQuestion;\
+	enQuestionLevel questionLevel; \
+	enOperationType operationType;\
+	int numberOfRightAnswer;\
+	int numberOfWrongAnswer;\
+\};\
+\
+struct strRandomChoice \{\
+	enOperationType operationType;\
+	enQuestionLevel questionLevel; \
+	int answer;\
+\};\
+\
+int RandomNumber(int from, int to)\
+\{\
+	int randnum = rand() % (to - from + 1) + from;\
+	return randnum;\
+\}\
+\
+\
+void SetScreenColor(bool result) \{\
+	if (result) \{\
+		system("color 2F"); // turn screen to Green\
+	\}\
+	else \{\
+		system("color 4F"); //  turn screen to Red\
+	\}\
+\}\
+\
+int QuestionAnswer(int first, int second , int mark) \{\
+	string OperationType[5]\{ "+" , "-" , "*" , "/" \};\
+	int answer = 0;\
+	cout << first << endl << second << "   " + OperationType[mark - 1] << endl;\
+	cin >> answer;\
+\
+	return answer;\
+\}\
+\
+strRandomChoice randomAnswer(int first, int second, int mark) \{\
+	strRandomChoice result ;\
+	string OperationType[5]\{ "+" , "-" , "*" , "/" \};\
+\
+	cout << first << endl << second << "   " + OperationType[mark - 1] << endl;\
+	cin >> result.answer; \
+\
+	result.operationType = (enOperationType)mark;\
+\
+	return result;\
+\}\
+\
+int makeDivide(int first, int second) \{\
+	int integerPart = 0;\
+	float number = first / second;\
+\
+	while (number >= 1.0) \{\
+		number -= 1.0;\
+		integerPart += 1;\
+	\}\
+\
+	return integerPart;\
+\}\
+\
+int chekQuestion(strRandomChoice choice , int first, int second) \{\
+	switch (choice.operationType)\
+	\{\
+	case enOperationType::add:\
+		return first + second;\
+		break;\
+\
+	case enOperationType::sub:\
+		return first - second;\
+		break;\
+\
+	case enOperationType::mult:\
+		return first * second;\
+		break;\
+\
+	case enOperationType::divid:\
+		return makeDivide(first, second);\
+		break;\
+	\}\
+\
+\}\
+\
+\
+\
+\
+\
+\
+bool makeQuestion(int first, int second, strGameResult gameResult) \{\
+	switch (gameResult.operationType)\
+	\{\
+	case enOperationType::add:\
+		if (QuestionAnswer(first, second, 1) == first + second)\
+			return true;\
+		break;\
+	case enOperationType::sub:\
+		if (QuestionAnswer(first, second, 2) == first - second)\
+			return true;\
+		break;\
+	case enOperationType::mult:\
+		if (QuestionAnswer(first, second, 3) == first * second)\
+			return true;\
+		break;\
+	case enOperationType::divid:\
+		if (QuestionAnswer(first, second, 4) == makeDivide(first, second))\
+			return true;\
+		break;\
+	\}\
+	\
+	if (gameResult.operationType == enOperationType::mix) \{\
+		strRandomChoice choice = randomAnswer(first, second, RandomNumber(1, 4));\
+		if (choice.answer == chekQuestion(choice , first, second)) \{\
+			return true;\
+		\}\
+\
+	\}\
+\
+	return false;\
+\}\
+\
+bool isCorrectAnswer(strGameResult gameResult) \{\
+	switch (gameResult.questionLevel)\
+	\{\
+	case enQuestionLevel::easy :\
+		return makeQuestion(RandomNumber(1, 20), RandomNumber(1, 20) , gameResult);\
+		break;\
+	case enQuestionLevel::med:\
+		return makeQuestion(RandomNumber(10, 30), RandomNumber(100, 40), gameResult);\
+		break;\
+	case enQuestionLevel::hard:\
+		return makeQuestion(RandomNumber(100, 40), RandomNumber(100, 40), gameResult);\
+		break;\
+\
+	case enQuestionLevel::mixx:\
+		return makeQuestion(RandomNumber(1, 100), RandomNumber(1, 100), gameResult);\
+		break;\
+	\}\
+\}\
+\
+\
+enQuestionLevel level() \{\
+	int  lev;\
+	cout << " enter question level [1] esay , [2] med , [3] hard , [4] mix";\
+	cin >> lev;\
+	return (enQuestionLevel)lev;\
+\}\
+\
+enOperationType operType() \{\
+	int  type;\
+	cout << " enter operation type [1] add , [2] sub , [3] mult , [4] divid , [5] mix";\
+	cin >> type;\
+	return (enOperationType)type;\
+\}\
+\
+short howManyQuestion() \{\
+	short GameRounds = 1;\
+	do \{\
+		cout << "How Many question ? \\n";\
+		cin >> GameRounds;\
+	\} while (GameRounds < 1);\
+	return GameRounds;\
+\}\
+\
+string Tabs(short NumberOfTabs)\
+\{\
+	string t = "";\
+	for (int i = 1; i < NumberOfTabs; i++)\
+	\{\
+		t = t + "\\t";\
+		cout << t;\
+	\}\
+	return t;\
+\}\
+\
+strGameResult playGame(short manyQuestions) \{\
+\
+\
+	strGameResult gameResult;\
+	int numberOfRightAnswer = 0, numberOfWrongAnswer = 0;\
+\
+\
+	gameResult.questionLevel = level();\
+	gameResult.operationType = operType();\
+\
+\
+	for (int i = 0; i < manyQuestions; i++)\
+	\{\
+		if (isCorrectAnswer(gameResult)) \{\
+			numberOfRightAnswer += 1;\
+			SetScreenColor(true);\
+			cout << "\\n Right answer  :) \\n";\
+		\}\
+		else \{\
+			numberOfWrongAnswer += 1;\
+			SetScreenColor(false);\
+			cout << "\\n Wrong answer  :( \\n";\
+\
+		\}\
+\
+	\}\
+	gameResult.numberOfRightAnswer = numberOfRightAnswer;\
+	gameResult.numberOfWrongAnswer = numberOfWrongAnswer;\
+	gameResult.numberOfQuestion = manyQuestions;\
+\
+	return gameResult;\
+\}\
+\
+\
+void ResetScreen()\
+\{\
+	system("cls");\
+	system("color 0F");\
+\}\
+\
+void showScore(strGameResult  gameResult) \{\
+	cout << Tabs(1) << "number of questions : " << gameResult.numberOfQuestion << endl;\
+	cout << Tabs(1) << "questions level: " << gameResult.questionLevel << endl;\
+	cout << Tabs(1) << "operation type : " << gameResult.operationType << endl;\
+	cout << Tabs(1) << "number of Right asnwer : " << gameResult.numberOfRightAnswer << endl;\
+	cout << Tabs(1) << "number of Wrong asnwer : " << gameResult.numberOfWrongAnswer << endl;\
+\}\
+\
+void showGameResult(strGameResult  gameResult) \{\
+\
+	if (gameResult.numberOfRightAnswer > gameResult.numberOfWrongAnswer)\
+	\{\
+		SetScreenColor(true);\
+			cout << Tabs(1) << " congratlation! you passed the exam\\n"; \
+			cout << Tabs(1) << "----------------------------------------\\n";\
+			showScore(gameResult);\
+			cout << Tabs(1) <<"----------------------------------------\\n";\
+\
+	\}\
+	else \{\
+		SetScreenColor(false);\
+		cout << Tabs(1) << " unfortunately! you failed in exam\\n";\
+		cout << Tabs(1) <<"----------------------------------------\\n";\
+		showScore(gameResult);\
+		cout << Tabs(1) <<"----------------------------------------\\n";\
+\
+	\}\
+\}\
+\
+\
+void startGame() \{\
+	char playAgain = 'y';\
+	do\
+	\{\
+		ResetScreen();\
+		strGameResult gameResult = playGame(howManyQuestion()); \
+		showGameResult(gameResult);\
+\
+		cout << "do you want play again ? [y]";\
+		cin >> playAgain;\
+\
+	\} while (playAgain == 'y' || playAgain == 'Y');\
+	ResetScreen();\
+\}\
+\
+int main() \{\
+	srand((unsigned)time(NULL));\
+\
+	startGame();\
+	return 0;\
+\}}

@@ -1,0 +1,40 @@
+#include <iostream>
+#include <cstdlib>
+
+using namespace std;
+
+int ReadRandomNumber(int from, int to) {
+
+	int randNum = rand() % (to - from + 1) + from;
+	return randNum;
+}
+
+int main() {
+
+	srand((unsigned)time(NULL));
+
+	int from = 0, to = 0 , guess = 0;
+
+	cout << "From -> "; cin >> from;
+	cout << "To   -> "; cin >> to;
+
+	int Rnum = ReadRandomNumber(from, to);
+	
+	do {
+
+		cout << "\n\n\tPlease enter guess number : ";
+		cin >> guess;
+
+		if (guess == Rnum) {
+
+			system("color 2F");
+			cout << "\t\t\t\t\t       *----------------*\n";
+			cout << "\t\t\t\t\t       * Congratulation *\n";
+			cout << "\t\t\t\t\t       *----------------*" << endl;
+		}
+		
+	} while (guess != Rnum);
+		
+	
+
+}

@@ -1,0 +1,52 @@
+#include <iostream>
+#include <string>
+#include <cstdlib>
+using namespace std;
+
+
+int PrintRandNumber(int from , int to) {
+
+	int RandNumb = rand() % (to - from + 1) + from;
+	return RandNumb;
+
+}
+
+enum enCharType { SmallLatter = 1, CapitalLatter = 2, SpecialChar = 3, Digits = 4 };
+
+char PrintRandomChar(enCharType CharType) {
+
+	switch (CharType) {
+
+	case enCharType::SmallLatter:
+		return PrintRandNumber(97, 122);
+		break;
+
+	case enCharType::CapitalLatter:
+		return PrintRandNumber(65, 90);
+		break;
+
+	case enCharType::SpecialChar:
+		return PrintRandNumber(33, 47);
+		break;
+
+	case enCharType::Digits:
+		return PrintRandNumber(49, 57);
+		break;
+		
+	}
+
+
+
+}
+
+int main() {
+
+	srand((unsigned)time(NULL));
+
+	cout << PrintRandomChar(enCharType::CapitalLatter) << endl;
+	cout << PrintRandomChar(enCharType::SmallLatter) << endl;
+	cout << PrintRandomChar(enCharType::SpecialChar) << endl;
+	cout << PrintRandomChar(enCharType::Digits) << endl;
+
+	return 0;
+}

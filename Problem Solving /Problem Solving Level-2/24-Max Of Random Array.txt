@@ -1,0 +1,71 @@
+#include <iostream>
+using namespace std;
+
+int RandomNumber(int from, int to) {
+
+	int RandNum = rand() % (to - from + 1) + from;
+	return RandNum;
+
+}
+
+void FillArrayWithRandomNumbers(int arr[100], int &arrLength) {
+
+	cout << "Enter numbers of elements : ";
+	cin >> arrLength;
+
+	for (int i = 0; i < arrLength; i++) {
+
+		arr[i] = RandomNumber(1, 100);
+
+	}
+
+	cout << endl;
+
+}
+
+void PrintArray(int arr[100], int arrLength) {
+
+
+	for (int i = 0; i < arrLength; i++)
+		cout << arr[i] << "  ";
+
+
+}
+
+int MaxNumberInArray(int arr[100] , int arrLength ) {
+	int MaxNum = 0;
+
+	for (int i = 0; i < arrLength; i++) {
+
+		if (arr[i] > MaxNum) 
+			MaxNum = arr[i];
+	
+	}
+	return MaxNum;
+}
+
+// if you need control random numbers : 
+
+
+
+
+
+int main() {
+
+	srand((unsigned)time(NULL));
+
+	int arr[100], arrLength  , from = 0 , to=0;
+
+	FillArrayWithRandomNumbers(arr, arrLength);
+
+	RandomNumber(from , to);
+
+	cout << "\nArray Element [  ";
+	PrintArray(arr, arrLength);
+	cout << "]\n\n";
+
+	cout << "Maximum Number In Array --> " << MaxNumberInArray(arr, arrLength);
+	cout << "\n\n" << endl;
+
+	return 0;
+}

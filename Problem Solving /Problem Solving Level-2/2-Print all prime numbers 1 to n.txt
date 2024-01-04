@@ -1,0 +1,52 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int ReadNUmber(string massage) {
+
+	int number = 0;
+	
+	do {
+		cout << massage;
+		cin >> number;
+	} while (number <= 0);
+	return number;
+}
+
+enum enPrimeOrNot { prime = 1, Notprime = 2 };
+
+enPrimeOrNot CheckPrime(int number) {
+
+	int HalfOfNumbers = round(number / 2);
+
+	for (int i = 2; i <= HalfOfNumbers; i++) {
+
+		if (number % i == 0) 
+			return enPrimeOrNot::Notprime;
+	}
+			return enPrimeOrNot::prime;
+
+}
+
+
+void PrintPrimeNumbersOfm1ToN(int number) {
+
+	
+	cout << "\n\nPrime Numbers from [1] to [" << number << "]";
+	cout << "are : " << endl;
+
+	for (int i = 1; i <= number; i++) {
+
+		if (CheckPrime(i) == enPrimeOrNot::prime) {
+			cout << i << endl;
+		}
+
+	}
+
+}
+
+int main() {
+
+	PrintPrimeNumbersOfm1ToN(ReadNUmber("Please enter number : "));
+}

@@ -1,0 +1,118 @@
+#include <iostream>
+#include <string>
+#include <cstdlib>
+
+using namespace std;
+
+int ReadRandomNumber(int from, int to) {
+
+    int RNumber = rand() % (to - from + 1) + from;
+
+    return RNumber;
+
+}
+
+enum enCharacterType { CapChar = 1, LowChar = 2, SpecChar = 3, Digit = 4 };
+
+
+char LatterType(enCharacterType CharType) {
+
+    switch (CharType) {
+
+    case enCharacterType::CapChar:
+        return ReadRandomNumber(65, 90);
+        break;
+
+    case enCharacterType::LowChar:
+        return ReadRandomNumber(97, 122);
+        break;
+
+    case enCharacterType::Digit:
+        return ReadRandomNumber(48, 57);
+        break;
+
+    case enCharacterType::SpecChar:
+        return ReadRandomNumber(33, 47);
+        break;
+
+
+    }
+}
+
+int ReadPosistiveNumber(string massage) {
+
+    int number = 0;
+
+    do {
+
+        cout << massage;
+        cin >> number;
+
+    } while (number <= 0);
+
+    return number;
+}
+
+string GenerateWord(enCharacterType CharType, short Length) {
+
+    string word;
+    for (int i = 1; i <= Length; i++) {
+        word = word + LatterType(CharType);
+    }
+    return word;
+
+}
+
+void PrintGenerateWordArray(string arr[100], int arrLength) {
+
+    for (int i = 0; i < arrLength; i++) {
+
+        cout << "Array [" << i  << "] : ";
+        cout << arr[i] << "\n";
+
+    }
+    cout << "\n";
+}
+
+string GenerateKey() {
+
+    string Key = "";
+
+    Key = GenerateWord(enCharacterType::CapChar, 4) + "-";
+    Key = Key + GenerateWord(enCharacterType::CapChar, 4) + "-";
+    Key = Key + GenerateWord(enCharacterType::CapChar, 4) + "-";
+    Key = Key + GenerateWord(enCharacterType::CapChar, 4);
+
+    return Key;
+}
+
+void FillArrayWithKeys(string arr[100], int arrLength) {
+
+    for (int i = 0; i < arrLength; i++) {
+
+        arr[i] = GenerateKey();
+
+    }
+
+}
+
+int main() {
+
+    srand((unsigned)time(NULL));
+
+
+    string arr[100];
+    int arrLength = ReadPosistiveNumber("Please enter number of keys you need generate : ");
+
+    FillArrayWithKeys(arr, arrLength);
+
+    PrintGenerateWordArray(arr, arrLength);
+    
+
+
+
+    cout << endl;
+
+
+    return 0;
+}

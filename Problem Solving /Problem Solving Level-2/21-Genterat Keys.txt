@@ -1,0 +1,103 @@
+#include <iostream>
+#include <string>
+#include <cstdlib>
+
+using namespace std;
+
+int ReadRandomNumber(int from, int to) {
+
+	int RNumber = rand() % (to - from + 1) + from;
+
+	return RNumber;
+
+}
+
+enum enCharacterType { CapChar = 1 , LowChar = 2 , SpecChar = 3 , Digit = 4 };
+
+
+char LatterType(enCharacterType CharType) {
+
+    switch (CharType) {
+
+    case enCharacterType::CapChar:
+        return ReadRandomNumber(65, 90);
+        break;
+
+    case enCharacterType::LowChar:
+        return ReadRandomNumber(97, 122);
+        break;
+
+    case enCharacterType::Digit:
+        return ReadRandomNumber(48, 57);
+        break;
+
+    case enCharacterType::SpecChar:
+        return ReadRandomNumber(33, 47);
+        break;
+
+
+    }
+}
+
+int ReadPosistiveNumber(string massage) {
+
+	int number = 0;
+
+	do {
+
+		cout << massage;
+		cin >> number;
+
+	} while (number <= 0);
+
+	return number;
+}
+
+string GenerateWord(enCharacterType CharType, short Length) {
+
+    string word;
+    for (int i = 1; i <= Length; i++) {
+        word = word + LatterType(CharType);
+    }
+    return word;
+
+}
+
+string GenerateKey() {
+
+    string Key = "-";
+
+    Key = GenerateWord(enCharacterType::CapChar, 4) + "-";
+    Key = Key + GenerateWord(enCharacterType::CapChar, 4) + "-";
+    Key = Key + GenerateWord(enCharacterType::CapChar, 4) + "-";
+    Key = Key + GenerateWord(enCharacterType::CapChar, 4);
+
+    return Key;
+}
+
+void HowMany() {
+
+    int times = ReadPosistiveNumber("Please enter any number : ");
+
+
+    for (int i = 1; i <= times; i++) {
+        if (i >= 10) {
+            cout << "#" << i << "   Serial --> " << GenerateKey() << endl;
+        }
+
+        else if (i >= 100) {
+            cout << "#" << i << "   Serial --> " << GenerateKey() << endl;
+        }
+        else
+        cout << "#" << i << "    Serial --> " << GenerateKey() << endl;
+        
+    }
+
+}
+
+int main() {
+
+    HowMany();
+
+	return 0;
+}

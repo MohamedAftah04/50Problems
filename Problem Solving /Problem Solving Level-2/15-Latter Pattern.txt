@@ -1,0 +1,44 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+
+
+int ReadPositiveNumber(string massage) {
+
+	int number = 0;
+
+	do {
+
+		cout << massage;
+		cin >> number;
+
+	} while (number <= 0);
+
+		return number;
+
+}
+
+
+void PrintLatterPattern(int number) {
+
+	for (int i = 65 ; i <= number + 65 - 1; i++) {
+
+		for (int j = 1; j <= number - (number + 65 - i - 1); j++) {
+
+			cout << char(i);
+
+		}
+
+		cout << endl;
+	}
+
+}
+
+int main() {
+
+	PrintLatterPattern(ReadPositiveNumber("please enter any positive number : "));
+
+	return 0;
+}

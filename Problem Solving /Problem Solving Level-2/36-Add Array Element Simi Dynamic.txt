@@ -1,0 +1,61 @@
+#include <iostream>
+using namespace std;
+
+int ReadPositiveNumber() {
+
+	int number = 0;
+
+	cout << "Please enter a number : ";
+	cin >> number;
+
+	return number;
+}
+
+void AddArrayElements(int number, int arr[100], int& arrLength) {
+
+	arrLength++;
+	arr[arrLength - 1] = number;
+
+}
+
+
+
+void InputUserNumberInArray(int arr[100], int& arrLength) {
+
+	bool AddMore = true;
+
+	do {
+
+		AddArrayElements(ReadPositiveNumber(), arr, arrLength);
+
+		cout << "Do you need add more elements ? 0->[no] , 1->[yes] ? ";
+		cin >> AddMore;
+
+	} while (AddMore);
+
+	cout << "\n**********************************\n";
+}
+
+void PrintArray(int arr[100], int arrLength) {
+
+	for (int i = 0; i < arrLength; i++) {
+
+		cout << arr[i] << "  ";
+
+	}
+	cout << "\n\a";
+}
+
+int main() {
+
+	int arr[100], arrLength = 0;
+
+	InputUserNumberInArray(arr, arrLength);
+	
+	cout << "Array Length   : " << arrLength << endl ;
+	cout << "Array elements : ";
+	PrintArray(arr, arrLength);
+	cout << endl;
+
+	return 0;
+}

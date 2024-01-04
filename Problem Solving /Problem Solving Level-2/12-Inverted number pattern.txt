@@ -1,0 +1,42 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+
+// Read number .
+int ReadNumber(string massage) {
+
+	int number = 0;
+
+	do {
+
+		cout << massage;
+		cin >> number;
+
+	} while (number < 0);
+
+	return number;
+
+}
+
+// CSN--> counter selected number
+void PrintInvertPattern(int number) {
+
+	for (int CSN = number; CSN > 0; CSN--) {
+
+			for (int j = 1; j <= CSN; j++) {
+				cout << CSN;
+			}
+			cout << endl;
+		}
+
+	}
+
+
+int main() {
+
+	PrintInvertPattern(ReadNumber("Please enter any number : "));
+
+	return 0;
+}
+

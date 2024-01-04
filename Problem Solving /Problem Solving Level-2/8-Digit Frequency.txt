@@ -1,0 +1,55 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+
+int ReadPositiveNumber(string massage) {
+
+	int number = 0;
+
+	do {
+
+		cout << massage;
+		cin >> number;
+
+
+	} while (number < 0);
+
+	return number;
+	}
+
+
+int DigitFrequency(short DigitToCheck, int number) {
+
+	int Reminder = 0;
+	int Freqcount = 0;
+
+	while (number > 0) {
+
+		Reminder = number % 10;
+		number = number / 10;
+
+		if (DigitToCheck == Reminder)
+			Freqcount++;
+
+
+
+	}
+
+	return Freqcount;
+}
+
+
+
+int main() {
+
+	int number = ReadPositiveNumber("please enter the main number : ");
+	short DigitToFrequency = ReadPositiveNumber("Please enter one digit of check : ");
+
+	cout << "\n\nDigit[" << DigitToFrequency << "] Frequency is[" <<
+		DigitFrequency(DigitToFrequency, number) << "] Times" << endl << endl;
+
+
+	return 0;
+}

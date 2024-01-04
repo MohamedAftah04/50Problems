@@ -1,0 +1,58 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+
+
+int ReadPositiveNumber(string massage) {
+
+	int number = 0;
+
+	do {
+
+		cout << massage;
+		cin >> number;
+
+	} while (number <= 0);
+
+		return number;
+
+}
+
+
+void PrintLatterPattern() {
+	int counter = 0;
+	cout << "\n";
+	string word = " ";
+
+	for (int i = 65; i <= 90; i++) {
+
+		for (int j = 65; j <= 90; j++) {
+
+			for (int k = 65; k <= 90; k++) {
+
+				word = word + char(i);
+				word = word + char(j);
+				word = word + char(k);
+
+				cout << word << endl;
+				word = " "  ;
+				counter++;
+
+			}
+			
+		}
+
+		cout << "\n*******************************************" << endl;
+	}
+	cout << "\n\nSum of Chars [" << counter * 3 << "].\n";
+	cout << "\n\nSum of Lines [" << counter << "].\n\n";
+}
+
+int main() {
+
+	PrintLatterPattern();
+
+	return 0;
+}

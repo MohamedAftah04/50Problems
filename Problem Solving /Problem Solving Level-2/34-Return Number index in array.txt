@@ -1,0 +1,92 @@
+    #include <iostream>
+    #include <string>
+    #include <cstdlib>
+
+    using namespace std;
+
+    int RandomNumber(int from, int to) {
+
+        int RNumber = rand() % (to - from + 1) + from;
+
+        return RNumber;
+
+    }
+
+    int ReadPosistiveNumber(string massage) {
+
+        int number = 0;
+
+        do {
+
+            cout << massage;
+            cin >> number;
+
+        } while (number <= 0);
+
+        return number;
+    }
+
+    //fill array completed!
+    void FillArrayWithRandomNumbers(int arr[100], int arrLength) {
+
+        for (int i = 0; i < arrLength; i++) {
+
+            arr[i] = RandomNumber(1, 100);
+
+        }
+
+    }
+
+    void PrintArray(int arr[100], int arrLength) {
+
+        for (int i = 0; i < arrLength; i++) {
+
+            cout << arr[i] << "   ";
+
+        }
+        cout << "\n";
+    }
+
+    short FindNumberPosisitionInArray(int arr[100], int search, int arrLength) {
+
+
+        for (int i = 0; i < arrLength; i++) {
+
+            if (search == arr[i]) {
+                return i ;
+            }
+        }
+
+        return -1;
+    }
+
+    int main() {
+
+        srand((unsigned)time(NULL));
+
+
+        int arr[100];
+        int arrLength = ReadPosistiveNumber("Enter number of elements : ");
+
+        FillArrayWithRandomNumbers(arr, arrLength);
+        PrintArray(arr, arrLength);
+
+        int NumberYouNeetToSearch = ReadPosistiveNumber("\n\nPlease enter a number to search for : ");
+
+
+        short NumberPosisition = (FindNumberPosisitionInArray(arr, NumberYouNeetToSearch, arrLength));
+       
+        if (NumberPosisition == -1) {
+            cout << "\n********************************************************\n";
+            cout << "The number is not found )-:\n";
+        }
+        else {
+            cout << "\n********************************************************\n";
+            cout << "The number found at posisition : " << NumberPosisition << "\n";
+            cout << "The number found its order     : " << NumberPosisition + 1 << "\n";
+        }
+        cout << endl;
+
+
+        return 0;
+    }

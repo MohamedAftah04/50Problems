@@ -1,0 +1,108 @@
+#include <iostream>
+using namespace std;
+
+//Positive number
+int ReadPositiveNumber(string massage) {
+
+	int number = 0;
+
+	do {
+
+		cout << massage;
+		cin >> number;
+
+	} while (number <= 0);
+
+	return number;
+
+}
+
+//Random number
+int RandomNumber(int from, int to) {
+
+	int RandNum = rand() % (to - from + 1) + from;
+	return RandNum;
+
+}
+
+bool InArray_TrueOrFalse(int number, int arr[100], int arrLength) {
+
+	for (int i = 0; i < arrLength; i++) {
+
+		if (number == arr[i]) {
+
+			return true;
+
+		}
+
+	}
+	return false;
+}
+
+//Fill Array
+void FillArrayWithRandomNumbers(int arr[100], int arrLength) {
+
+	for (int i = 0; i < arrLength; i++) {
+
+		arr[i] = RandomNumber(1, 100);
+
+	}
+
+}
+
+//Print array
+void PrintArray(int arr[100], int arrLength) {
+
+	for (int i = 0; i < arrLength; i++) {
+
+		cout << arr[i] << "  ";
+
+	}
+	cout << "\n";
+}
+
+//Number Position
+short NumberPosition(int number, int arr[100], int arrLength) {
+
+	for (int i = 0; i < arrLength; i++) {
+
+		if (number == arr[i])
+			return i;
+
+	}
+	return -1;
+}
+
+int main() {
+
+	//Creat random
+	srand((unsigned)time(NULL));
+
+	int arr[100];
+	int arrLength = ReadPositiveNumber("Please enter number of elements : ");
+	
+	FillArrayWithRandomNumbers(arr, arrLength);
+
+	cout << "\n\nArray 1 elements : \n";
+	PrintArray(arr, arrLength);
+
+	int number = ReadPositiveNumber("\n\nEnter the number you need to search it in array : ");
+	
+	cout << "\n**********************************************\n";
+
+	bool IsNumberInArray = InArray_TrueOrFalse(number, arr, arrLength);
+
+	if (IsNumberInArray == false) {
+		cout << "\n\nThe Number Not found (-:\n";
+	}
+	else
+	{
+		cout << "\nNumber your looking for is [" << number << "]\n";
+		cout << "Yes, The number is found :-    \n\n";
+
+	}
+
+	cout << endl;
+
+	return 0;
+}

@@ -1,0 +1,80 @@
+#include <iostream>
+using namespace std;
+
+//Array Length
+int ReadPositiveNumber(string massage) {
+
+	int number = 0;
+
+	do {
+
+		cout << massage;
+		cin >> number;
+
+	} while (number <= 0);
+
+		return number;
+
+}
+
+//RandomNumber
+int RandomNumber(int from, int to) {
+
+	int RandNumber = rand() % (to - from + 1) + from;
+
+	return RandNumber;
+
+}
+
+void FillArrayWithRandomNumbers(int arr[100], int arrLength) {
+
+	for (int i = 0; i < arrLength; i++) {
+
+		arr[i] = RandomNumber(1, 100);
+
+	}
+
+}
+
+
+void ReverceArray(int arrSource[100], int arrDestination[100], int arrLength) {
+
+	for (int i = 0; i < arrLength; i++) {
+		
+		arrDestination[i] = arrSource[arrLength-1-i];
+
+	}
+
+}
+
+void PrintArray(int arr[100], int arrLength) {
+
+	for (int i = 0; i < arrLength; i++) {
+		
+		cout << arr[i] << "   ";
+
+	}
+	cout << "\n\n";
+}
+
+int main() {
+
+	srand((unsigned)time(NULL));
+
+	int arrSource[100] , arrDestination[100];
+	int arrLength = ReadPositiveNumber("Please enter elements of array : ");
+
+	FillArrayWithRandomNumbers(arrSource, arrLength);
+
+	cout << "Array 1 elements : \n";
+	PrintArray(arrSource, arrLength);
+
+	ReverceArray(arrSource , arrDestination , arrLength);
+
+	cout << "Array 2 elements after copied array 1 in reversed order : \n";
+	PrintArray(arrDestination, arrLength);
+
+	cout << "\n" << endl;
+
+	return 0;
+}

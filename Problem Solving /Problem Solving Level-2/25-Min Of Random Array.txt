@@ -1,0 +1,66 @@
+		#include <iostream>
+
+		using namespace std;
+
+		int CreatRandomNumber(int from, int to) {
+
+			int RandomNum = rand() % (to - from + 1) + from;
+			return RandomNum;
+
+		}
+
+		void FillArrayWithRandomNumbers(int arr[100], int &arrLength) {
+
+			cout << "Enter Number Of Elements -> ";
+			cin >> arrLength;
+
+			for (int i = 0; i < arrLength; i++) {
+
+				arr[i] = CreatRandomNumber(1, 100);
+
+			}
+		}
+
+		void printArray(int arr[100], int arrLength) {
+
+			for (int i = 0; i < arrLength; i++)
+				cout << arr[i] << "   ";
+
+			cout << "\n";
+		}
+
+		int PrintMinimumNumberInArray(int arr[100], int arrLength) {
+
+			int Minimum = 0;
+			Minimum = arr[0];
+
+			for (int i = 0; i < arrLength; i++) {
+
+				if (Minimum > arr[i]) {
+					Minimum = arr[i];
+				}
+
+			}
+			return Minimum;
+		}
+
+
+
+
+
+
+		int main() {
+
+			srand((unsigned)time(NULL));
+
+			int arr[100], arrLength;
+
+			FillArrayWithRandomNumbers(arr, arrLength);
+
+			cout << "Array Elements : ";
+			printArray(arr, arrLength);
+
+			cout << "\nMaximum number in array [" << PrintMinimumNumberInArray(arr , arrLength) << "]\n\n" << endl;
+
+			return 0;
+		}

@@ -1,0 +1,66 @@
+#include <iostream>
+#include<string>
+using namespace std;
+
+
+int ReadPositiveNumber(string massage) {
+
+	int number = 0;
+
+	do {
+
+		cout << massage;
+		cin >> number;
+
+
+	} while (number < 0);
+
+	return number;
+}
+
+int AnalisisNumber(short DigitToCheck, int number)
+{
+
+	int Freqcount = 0, Reminder = 0;
+
+
+	while (number > 0){
+
+		Reminder = number % 10;
+	number = number / 10;
+
+	if (Reminder == DigitToCheck)
+		Freqcount++;
+}
+	return Freqcount;
+	
+
+}
+
+void PrintAllDigitsFrequency(int number) {
+
+	cout << "\n" << endl;
+
+	for (int i = 0; i < 10; i++) {
+
+		short DigitToCheck = 0;
+		DigitToCheck = AnalisisNumber(i, number);
+
+		if (DigitToCheck > 0) {
+			cout << "Digit [" << i << "] Frequency is [" << DigitToCheck << "] Time(s)." << endl;
+		}
+
+	}
+
+}
+
+
+
+int main() {
+
+	int number = ReadPositiveNumber("Please enter Any Number : ");
+	PrintAllDigitsFrequency(number);
+	cout << "\n\n" << endl;
+
+	return 0;
+}

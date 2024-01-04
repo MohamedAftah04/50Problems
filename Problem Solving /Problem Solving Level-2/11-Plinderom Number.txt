@@ -1,0 +1,57 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+
+// Read number .
+int ReadNumber(string massage) {
+
+	int number = 0;
+
+	do {
+
+		cout << massage;
+		cin >> number;
+
+	} while (number < 0);
+
+	return number;
+
+}
+
+// Reverse number.
+int ReverseNumber(int number) {
+
+	int reminder = 0, number2 = 0;
+
+	while (number > 0) {
+		reminder = number % 10;
+		number = number / 10;
+
+		number2 = number2 * 10 + reminder;
+	}
+
+	return number2;
+
+}
+
+//Blendrom number.
+void BlendromNumber(int number) {
+
+	int Reverse = ReverseNumber(number);
+
+	if (Reverse == number) {
+		cout << "Yes, it is a palendrom number :)\n\n";
+	}
+	else
+		cout << "No, it is not a palendrom number ):\n\n";
+
+}
+
+
+int main() {
+
+	BlendromNumber(ReadNumber("Please enter number : "));
+
+	return 0;
+}

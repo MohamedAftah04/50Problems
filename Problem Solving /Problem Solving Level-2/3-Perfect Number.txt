@@ -1,0 +1,57 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+
+int ReadPositiveNumber(string massage) {
+
+	int number = 0;
+
+	do {
+
+		cout << massage;
+		cin >> number;
+
+
+	} while (number <= 0);
+	return number;
+
+}
+
+enum enPerfectOrNot{Per = 0 , NotPer = 1};
+
+bool CheckNumberPerOrNot(int number) {
+
+	int sum = 0;
+
+	for (int i = 1; i < number; i++) {
+
+		if (number % i == 0)
+		
+			sum = sum + i;
+	}
+
+	return number == sum;
+
+}
+
+void PrintRes(int number) {
+
+	if (CheckNumberPerOrNot (number)) {
+		cout << "[" << number << "] Perfect number !" << endl << endl;
+	}
+	else
+		cout << "[" << number << "] Not Perfect number :(" << endl << endl;
+
+}
+
+
+
+int main() {
+	
+	PrintRes(ReadPositiveNumber("Please enter number : "));
+
+
+	return 0;
+}

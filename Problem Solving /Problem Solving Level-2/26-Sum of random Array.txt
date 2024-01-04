@@ -1,0 +1,67 @@
+#include <iostream>
+
+using namespace std;
+
+int CreatRandomNumber(int from, int to) {
+
+	int RandNum = rand() % (to - from + 1) + from;
+
+	return RandNum;
+
+}
+
+void FillArrayWithRandomNumbers(int arr[100], int &arrLength) {
+
+	cout << "Enter number of elements : ";
+	cin >> arrLength;
+
+	for (int i = 0; i < arrLength; i++) {
+
+		arr[i] = CreatRandomNumber(1, 100);
+
+	}
+}
+
+void PrintArray(int arr[100], int arrLength) {
+
+	cout << "\nArray Elements : ";
+	for (int i = 0; i < arrLength; i++) {
+
+		cout << arr[i] << "  ";
+
+	}
+
+	cout << "\n";
+}
+
+int PrintSumNumberInArray(int arr[100], int arrLength) {
+
+	int Sum = 0;
+
+	for (int i = 0; i < arrLength; i++) {
+
+		Sum = Sum + arr[i];
+		
+	}
+	return Sum ;
+}
+
+
+
+
+int main() {
+
+	srand((unsigned)time(NULL));
+
+	int arr[100], arrLength;
+
+	FillArrayWithRandomNumbers(arr, arrLength);
+	
+	PrintArray(arr, arrLength);
+
+	cout << "\nSum Of numbers in this array --> [" <<
+		PrintSumNumberInArray(arr, arrLength) << "] \n\n" << endl;
+
+
+	return 0;
+}

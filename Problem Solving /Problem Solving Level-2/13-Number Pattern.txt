@@ -1,0 +1,43 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+
+// Read number .
+int ReadNumber(string massage) {
+
+	int number = 0;
+
+	do {
+
+		cout << massage;
+		cin >> number;
+
+	} while (number < 0);
+
+	return number;
+
+}
+
+
+void PrintInvertedPattern(int number) {
+
+	for (int i = 1; i <= number; i++) {
+
+		for (int j = i; j >= 1; j--) {
+			cout << i;
+		}
+
+		cout << endl;
+
+	}
+
+}
+
+int main() {
+
+	PrintInvertedPattern(ReadNumber("Please enter any number : "));
+
+	return 0;
+}
+
